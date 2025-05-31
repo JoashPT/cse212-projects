@@ -9,7 +9,8 @@ public class PriorityQueueTests
     // Scenario: Create a queue with the following items and priority: H(1), Li(3), He(2)
     // run until the queue is empty
     // Expected Result: Li, He, H
-    // Defect(s) Found: 
+    // Defect(s) Found: Same value is being returned (infinte loop)
+    //                  Last index cannot be accessed
     public void TestPriorityQueue_DifferentPriority()
     {
         var hydrogen = new PriorityItem("H", 1);
@@ -41,7 +42,10 @@ public class PriorityQueueTests
     // Scenario: Create a queue with two items of the same priority the first input 
     // with the same priority should be the first one out: Be(4), C1(6), B(5), C2(6)
     // Expected Result: C1, C2, B, Be
-    // Defect(s) Found: 
+    // Defect(s) Found: Same value is being returned (infinte loop)
+    //                  Last index cannot be accessed
+    //                  Latter index with same value is returned instead of Former
+    //                  C2 is returned instead of C1 (priorityQueue.Dequeue not fixed)
     public void TestPriorityQueue_SamePriority()
     {
         var beryllium = new PriorityItem("Be", 4);
@@ -75,7 +79,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Running an empty queue should return an error
     // Expected Result: Exception should be thrown with appropriate error message.
-    // Defect(s) Found: 
+    // Defect(s) Found: No defects found
     public void TestPriorityQueue_EmptyQueue()
     {
         var priorityQueue = new PriorityQueue();
